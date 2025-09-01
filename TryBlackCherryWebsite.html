@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Try Black Cherry Website</title>
+          <!-- External links -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <style>
+        * {box-sizing: border-box;}
+        html, body {
+            margin: 0;
+            font: 400 15px/1.8 "Raleway, Roboto slab";
+            color: #777;
+            text-align: center;
+            background-image: url(modern.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* navigation bar*/
+        .navbar {
+            overflow: visible; 
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            width: 100%;
+            background-color: #B8210F;
+            }
+        .navbar a {
+            float: left;
+            display: block;
+            color: whitesmoke;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background: border-box;
+            color: black;
+        }
+        .navbar .icon {
+            display: none;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 6px 10px;
+            transition: all 0.3s ease;
+            margin-left: auto;
+        }
+        .search-container input[type="text"] {
+            border: none;
+            outline: none;
+            background: transparent;
+            color: whitesmoke;
+            font-size: 18px;
+            padding: 6px 10px;
+            width: 150px;
+            transition: width 0.4s ease;
+        }
+        .search-container button {
+            background: transparent;   /* keeps background clear */
+            border: none;              /* remove border */
+            cursor: pointer;
+            color: white;            /* <--- change icon color here */
+            font-size: 20px;           /* adjust size */
+            transition: color 0.3s ease;
+}
+
+
+        .search-container input[type="text"]::placeholder {
+            color: white;
+        }
+        .container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+    /* Fix incorrect color name */
+        .header p, h1 {
+            color: white;
+        }
+
+        @media screen and (max-width: 600px) {
+        .search-container {
+            width: 100%;
+            margin-top: 10px;
+            justify-content: space-between;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .search-container button {
+            font-size: 20px;
+        }
+    }
+        .active {
+            background-color: #04AA6D;
+            color: white;
+        }
+        /* dropdown*/
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropbtn {
+            cursor: pointer;
+        }
+        .dropdown .dropbtn {
+            font-size: 18px;
+            border: none;
+            outline: none;
+            color: whitesmoke;
+            padding: 14px 16px;
+            background: border-box;
+            font-family: inherit;
+            margin: 0;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: transparent;
+            min-width: 160px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: whitesmoke;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background: border-box;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown .dropbtn:hover {
+            color: black;
+            transition: 0.3s ease;
+        }
+
+        /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the navbar (.icon) */
+        @media screen and (max-width:600px) {
+        .navbar a:not(:first-child), .dropdown .dropbtn {display: none;}
+        .navbar a.icon {
+            float: right;
+            display: block;
+          }
+        }
+        /* The "responsive" class is added to the navbar with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+        @media screen and (max-width: 600px) {
+        .navbar.responsive {position: relative;}
+        .navbar.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+        .navbar.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+          }
+        .navbar.responsive .dropdown {float: none;}
+        .navbar.responsive .dropdown-content {position: relative;}
+        .navbar.responsive .dropdown .dropbtn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            }
+        }
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .login-btn {
+            margin-left: auto;
+            padding: 14px 16px;
+            font-size: 18px;
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            height: 100%;
+            align-items: center;
+        }
+        .login-btn:hover {
+            background-color: rgba(0, 0, 1, 1.0);
+            border-radius: 1px;
+        }   
+        /* logo*/
+        #logo {
+            width: 80px;
+            height: auto;
+            margin-left: 20px;
+            float: left;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .main {
+            padding: 16px;
+            margin-top: 30px;
+          }
+        .container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            }
+        }
+        .bgimg-1, .bgimg-2, .bgimg-3 {
+            position: relative;
+            opacity: 0.65;
+            background: center / cover no-repeat fixed;
+        }
+        .bgimg-1 {
+            background: url("darya.jpg");
+            min-height: 80vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            opacity: 80%;
+        }
+        .bgimg-1::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 1;
+        }
+        .bgimg-2 {
+            background-image: url("fo.jpg");
+            background-position: center;
+            background-attachment: fixed;
+
+            background-size: cover;
+            min-height: 400px;
+            /*animation: diagonalMove 12s linear infinite;*/
+        }
+
+            @keyframes diagonalMove {
+            0%   { background-position: 0% 0%; }
+            50%  { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        .bgimg-3 {
+            background-image: url("img_parallax3.jpg");
+            min-height: 400px;
+        }
+        .caption {4
+        ]
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #000;
+        }
+       .header {
+            position: relative;
+            z-index: 2; /* Above overlay */
+            text-align: center;
+            color: white;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .header p {
+            font-size: 30px;
+            text-shadow: 2px 5px 5px black, 0 0 5px dimgrey;
+            font-style: italic;
+            margin: 0;
+            padding: 0;
+            color: write;
+            text-align: center;
+        }
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 18px;
+            gap: 10px;
+            justify-content: center;
+        .flex-container > div {
+            background-color: transparent;
+            margin: 10px;
+            padding: 20pz;
+            font-size: 30px;
+        }
+        }
+        .flex-item-left {
+            padding: 0;
+            flex: 1;
+            min-width: 300px;
+        }
+        /* Create two unequal columns that floats next to each other */
+        /* Left column */
+        .leftcolumn {   
+            float: left;
+            width: 70%;
+        }
+        /* Right column */
+        .rightcolumn {
+            float: left;
+            width: 30%;
+            padding-left: 20px;
+        }
+        /* Fake image */
+        .fakeimg {
+            background-size: cover;
+            background-position: center;
+            background: url(fotoh3.jpg) no-repeat center;
+            width: 100%;
+            padding: 20px;
+        }
+        .fakeimg2 {
+            background-color: #aaa;
+            background: url(two.jpg) no-repeat left;
+            width: 100%;
+            padding: 20px;
+        }
+        .fakeimg3 {
+            background: url(imad.jpg) no-repeat center;
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            padding: 20px;
+        }
+        .picture1 {
+            background: url(national.jpg) no-repeat center;
+            width: 100%;
+            padding: 20px;
+            background-position: center;
+            background-size: cover;
+        }
+        .picture2 {
+            background: url(vitaly.jpg) no-repeat center;
+            width: 100%;
+            padding: 20px;
+            background-position: center;
+            background-size: cover;
+        }
+        /* Add a card effect for articles */
+        .card {
+            background-color: transparent;
+            padding: 20px;
+            margin-top: 20px;
+            color: white;
+        }
+        /* Clear floats after the columns */
+        .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .polaroid {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: semi-bold;
+        }
+        .book {
+            width: 400px;
+            height: 400px;
+            perspective: 1000px;
+            position: relative;
+        }
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            background: white;
+            background-position: center;
+            background-size: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            backface-visibility: hidden;
+        }
+        
+        .page:nth-child(1) { z-index: 3; }
+        .page:nth-child(2) { z-index: 2; }
+        .page:nth-child(3) { z-index: 1; }
+        .flipped {
+            transform: rotateY(0deg);
+            z-index: 0 !important;
+        }
+        .glass-explode span {
+            display: inline-block;
+            opacity: 0;
+            transform: translate(0, 0);
+            animation: glassExplode 1.2s ease-out forwards;
+            animation-delay: calc(0.02s * var(--i));
+            text-shadow: 0 0 2px #fff, 0 0 5px #ccc;
+        }
+        /* Footer */
+        .footer {
+    background: #222;
+    color: #f1f1f1;
+    padding: 50px 20px;
+    margin-top: 40px;
+    border-top: 2px solid #444;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footer h3 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #ff4c4c; /* cherry accent */
+}
+
+.footer p, 
+.footer a {
+    font-size: 0.9rem;
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.6;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+.footer form {
+    display: flex;
+    gap: 10px;
+}
+
+.footer input[type="email"] {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.footer button {
+    background: #ff4c4c;
+    border: none;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.footer button:hover {
+    background: #e63939;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+}
+
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: border-box;
+        }    
+        h1 {
+            color: write;
+            text-shadow: 4px 4px 5px grey, 0 0 5px silver;
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: 40px;
+            font-weight: bolder;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h3 {
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font: 20px "Lato", sans-serif;
+            color: #111;
+            text-align: center;
+        }
+        @media screen and (max-width: 600px) {
+        .navbar-content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .login-btn {
+            margin-left: 0;
+            width: 100%;
+            text-align: left;
+            }
+        }
+
+        @media only screen and (max-device-width: 1024px) {
+        .bgimg-1, .bgimg-2, .bgimg-3 {
+            background-attachment: scroll;
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+            100% {
+            opacity: 1;
+            transform: translateY(0);
+            }
+        }
+        @keyframes glassExplode {
+            0% {
+            opacity: 1;
+            transform: translate(0, 0) rotate(0deg) scale(1);
+            filter: blur(0px);
+        }
+            100% {
+            opacity: 0;
+            transform: translate(
+            calc(-80px + 160px * var(--x)),
+            calc(-80px + 160px * var(--y))
+        )   
+            rotate(calc(180deg * var(--r))) scale(1.5);
+            filter: blur(2px);
+            }
+        }
+        /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 800px) {
+        .leftcolumn, .rightcolumn {   
+            width: 100%;
+            padding: 0;
+            }
+        }
+        /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+        @media screen and (max-width: 400px) {
+        .topnav a {
+            float: none;
+            width: 100%;
+            }
+        }
+        .div1 {
+            width: auto;
+        }
+        .div2 {
+            width: auto;
+            background-color: lightgrey;
+            height: auto;
+        }
+        /* Gallery Grid Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 300px;
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 300px;
+            height: 250px;  /* 🔥 Fixed height */
+            object-fit: cover; /* 🔥 Crops instead of stretching */
+            display: block;
+        }
+
+    .desc {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ddd;
+      height: 60px;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 12px;
+      font-size: 20px;
+      color: white;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      user-select: none;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .prev:hover, .next:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+      </style>
+        <body>
+            <header>
+        <div class="navbar" id="myNavbar">
+            <img id="logo" src="logo3.PNG" alt="Black Cherry Logo">
+            <a href="#">Home</a>
+            <a href="Galleries.html">Galleries</a>
+            <a href="news.html">News</a>
+            <a href="about.html">About</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">Auctions<i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" target="_blank">Upcoming Auctions</a>
+                    <a href="#" target="_blank">Past Auctions</a>
+                </div>
+            </div>
+
+             <div class="dropdown">
+                <button class="dropbtn">Buy<i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" target="_blank">Browse Arts</a>
+                    <a href="#" target="_blank">New Arrivals</a>
+                    <a href="#" target="_blank">Best Sellers</a>
+
+                </div>
+            </div>
+             <div class="dropdown">
+                <button class="dropbtn">Sell<i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#" target="_blank">Start Selling</a>
+                    <a href="#" target="_blank">How it works</a>
+                    <a href="#" target="_blank">Seller FAQ</a>
+
+                </div>
+            </div>
+                <button class="login-btn" onclick="displayAlert()">Register/Log in</button>
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+        </div>
+    </header>
+ <!-- Parallax Section 1 -->
+  <div class="bgimg-1">
+  <div class="header">
+    <h1 id="glass-title">Black Cherry</h1>
+    <p>Explore The World Of Arts With Us!!!</p>
+    <div class="search-container">
+  <form action="/action_page.php" class="search-form">
+    <button type="submit" class="search-icon"><i class="fa fa-search"></i></button>
+    <input type="text" placeholder="Search.." name="search">
+  </form>
+</div>
+
+  </div>
+</div>
+
+
+  <!-- Content Section -->
+  <div style="background-color:transparent; padding:50px 80px; color:#777; text-align:justify;">
+    
+
+<div class="flex-container">
+<div class="container">
+    <div class="section">
+      <div class="polaroid">Arts News</div>
+    
+      <div class="book" data-book>
+        <div class="page" style="background-image: url(paris2.jpg);">New Gallery Opens in Paris</div>
+
+        <div class="page" style="background-image: url(ome2.jpg);">Top 10 Contemporary Artists</div>
+        
+        <div class="page" style="background-image: url(paris.jpg);">Art Basel Highlights</div>
+    </div>
+    </div>
+
+    <div class="section">
+      <div class="polaroid">Events Highlights</div>
+      <div class="book" data-book>
+        <div class="page" style="background-image: url(party1.jpg);">Spring Music Festival</div>
+
+        <div class="page"style="background-image: url(conference.jpg);">Tech Conference 2025</div>
+
+        <div class="page" style="background-image: url(charity.jpg);">Charity Gala in NY</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="polaroid">Entertainments Buzz</div>
+      <div class="book" data-book>
+        <div class="page" style="background-image: url(blockbuster.jpg);">Blockbuster Movie Releases</div>
+
+        <div class="page" style="background-image: url(interviews.jpg);">Celebrity Interviews</div>
+
+        <div class="page" style="background-image: url(netflix.jpg);">Top Netflix Picks</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <!-- Parallax Section 2 -->
+  <div class="section">
+
+  <div class="bgimg-2" style="opacity: 75%; justify-content: center; flex-direction: column; text-align: center; min-height: 400px; color: white;">
+   <h2 style="font-size: 2.5rem; margin-bottom: 20px; margin-top: 60px;">Experience Timeless Art</h2>
+    <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px;">
+      Explore auctions, discover rare masterpieces, and be part of a global community that celebrates creativity and expression.  
+    </p>
+    <button style="
+        padding: 12px 24px;
+        font-size: 1rem;
+        background-color: rgba(0,0,0,0.7);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    ">
+      Explore Now
+    </button>
+</div>
+
+  </div>
+
+  <!-- More Content -->
+  <div style="background-color:#282E34; color:whitesmoke; padding:50px 80px; text-align:justify;">
+    <p>Discover more about us.</p>
+  </div>
+</div>
+  <!-- Parallax Section 3 -->
+  <div class="section">
+  <div class="carousel-container">
+  <div class="carousel-slide" id="carouselSlide">
+    <div class="carousel-item">
+      <img src="fot.jpg" alt="Image 1">
+      <div class="desc">Description for Image 1</div>
+    </div>
+    <div class="carousel-item">
+      <img src="fot4.jpg" alt="Image 2">
+      <div class="desc">Description for Image 2</div>
+    </div>
+    <div class="carousel-item">
+      <img src="fot7.jpg" alt="Image 2">
+      <div class="desc">Description for Image 2</div>
+    </div>
+    <div class="carousel-item">
+      <img src="fot5.jpg" alt="Image 2">
+      <div class="desc">Description for Image 2</div>
+    </div>
+    <div class="carousel-item">
+      <img src="fot6.jpg" alt="Image 2">
+      <div class="desc">Description for Image 2</div>
+    </div>
+    <div class="carousel-item">
+      <img src="fot2.jpg" alt="Image 3">
+      <div class="desc">Description for Image 3</div>
+    </div>
+    <div class="carousel-item">
+      <img src="fot3.jpg" alt="Image 4">
+      <div class="desc">Description for Image 4</div>
+    </div>
+  </div>
+  <span class="prev" onclick="moveSlide(-1)">&#10094;</span>
+  <span class="next" onclick="moveSlide(1)">&#10095;</span>
+</div>
+
+  <!-- Final Content Section -->
+  <div style="background-color:#282E34; color:#ddd; padding:50px 80px; text-align:justify;">
+    <p>Notice how the images create depth as you scroll. Parallax adds motion and interactivity without needing complex scripts or frameworks.</p>
+  </div>
+</div>
+
+  <!-- Final Parallax Section -->
+  <div class="section">
+    <div class="flex-container">
+  <div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Featured Artist</h2>
+      <h5>Meet Luna Vega, Apr 11, 2025</h5>
+      <div class="fakeimg" style="height:200px;"></div>
+      <p>Renowned for her abstract oil paintings, Luna brings emotions to life through color and chaos.</p>
+      <p>Her upcoming collection, *Fragments of Time*, explores identity and transformation.</p>
+    </div>
+    <div class="card">
+      <h2>The Art Of Process</h2>
+      <h5>Artist Q&A, Mar 27, 2025</h5>
+      <div class="picture1" style="height:200px;"></div>
+      <p>Peek behind the curtain of artistic creation.</p>
+      <p>In this feature, we explore how various artists develop their work—from initial sketches to final masterpieces. Learn how intuition, experimentation, and even failure play key roles in the process.</p>
+    </div>
+    <div class="card">
+      <h2>Interview Spotlight</h2>
+      <h5>Artist Q&A, Feb 14, 2025</h5>
+      <div class="picture2" style="height:200px;"></div>
+      <p>We sit down with sculptor Daniel Cross to discuss his new work blending AI with traditional materials.</p>
+      <p>“Art is no longer static,” he claims. “It’s evolving with us.</p>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2 style="color: white;">Art Quotes</h2>
+
+
+      <div style="background-image: url(fott.jpg); background-size: cover; background-position: center; height:100px;"></div>
+  <p><em>"Every artist was first an amateur."</em> – Ralph Waldo Emerson</p>
+  <p><em>"Creativity takes courage."</em> – Henri Matisse</p>    </div>
+    <div class="card">
+      <h3 style="color: white;">Popular Post</h3>
+    <div class="fakeimg3" style="margin-bottom:10px;">
+      <a href="color-theory.html" style="text-decoration:none; color:white;">
+        <p><strong>🎨 Color Theory Basics</strong><br><small>Learn how colors influence mood and message.</small></p>
+      </a>
+    </div>
+    <div class="fakeimg3" style="margin-bottom:10px;">
+      <a href="top-modern-artists.html" style="text-decoration:none; color:white;">
+        <p><strong>🖼️ Top 10 Modern Artists</strong><br><small>Discover today's influential creators.</small></p>
+      </a>
+    </div>
+    <div class="fakeimg3" style="margin-bottom:10px">
+      <a href="mixed-media.html" style="text-decoration:none; color:white;">
+        <p><strong>🧵 Mixed Media Inspiration</strong><br><small>Ideas to combine textures and techniques.</small></p>
+      </a>
+    </div>
+  </div>
+    <div class="card">
+    <h3 style="color: white; margin-bottom: 100px; margin-top: 100p;">Stay In Touch</h3>
+    <div class="fakeimg3" style="margin-bottom:10px; height: 150px; color: white;">
+  <p>
+    <a href="#"><i class="fa fa-facebook-official"></i> Facebook</a><br>
+    <a href="#"><i class="fa fa-instagram"></i> Instagram</a><br>
+    <a href="#"><i class="fa fa-twitter"></i> Twitter</a>
+  </p>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="footer">
+  <div class="footer-container">
+    
+    <!-- About / Address -->
+    <div>
+      <h3>Contact Us</h3>
+      <p>Black Cherry HQ</p>
+      <p>123 Art Street, Cityville</p>
+      <p>Phone: +1 (800) 123-4567</p>
+      <p>Email: <a href="mailto:info@blackcherry.com">info@blackcherry.com</a></p>
+    </div>
+    
+    <!-- Quick Links -->
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="#">Home</a></p>
+      <p><a href="#">About</a></p>
+      <p><a href="#">Gallery</a></p>
+      <p><a href="#">Contact</a></p>
+    </div>
+    
+    <!-- Newsletter -->
+    <div>
+      <h3>Subscribe</h3>
+      <p>Stay updated with our latest news and art collections.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    
+  </div>
+
+  <!-- Footer bottom -->
+  <div class="footer-bottom">
+    <p>Copyright © 2025 Black Cherry | All Rights Reserved</p>
+  </div>
+</div>
+
+
+
+
+      
+        <script>
+
+            function myFunction() {
+            var x = document.getElementById("myNavbar");
+            if (x.className === "navbar") {
+            x.className += " responsive";
+            } else {
+            x.className = "navbar";
+            }
+        }
+            function displayAlert() {
+            alert("Registration coming soon!")
+            }
+             const title = document.getElementById("glass-title");
+  const originalText = title.textContent;
+  title.textContent = "";
+
+  [...originalText].forEach((char, i) => {
+    const span = document.createElement("span");
+    span.textContent = char;
+    span.style.setProperty('--x', Math.random().toFixed(2));
+    span.style.setProperty('--y', Math.random().toFixed(2));
+    span.style.setProperty('--r', Math.random().toFixed(2));
+    span.style.setProperty('--i', i);
+    title.appendChild(span);
+  });
+
+  title.classList.add("glass-explode");
+
+  // Restore after 1.5 seconds (match your animation duration)
+  setTimeout(() => {
+    title.classList.remove("glass-explode");
+    title.textContent = originalText;
+  }, 1500);
+
+  document.querySelectorAll('[data-book]').forEach(book => {
+      const pages = book.querySelectorAll('.page');
+      let current = 0;
+
+      setInterval(() => {
+        if (current < pages.length) {
+          pages[current].classList.add('flipped');
+          current++;
+        } else {
+          pages.forEach(page => page.classList.remove('flipped'));
+          current = 0;
+        }
+      }, 5000);
+    });
+
+ const slide = document.getElementById("carouselSlide");
+  const items = document.querySelectorAll(".carousel-item");
+  const itemWidth = 320; // 300px + margin
+  let counter = 0;
+
+  function moveSlide(direction) {
+    counter += direction;
+    if (counter < 0) {
+      counter = items.length - 1;
+    } else if (counter >= items.length) {
+      counter = 0;
+    }
+    slide.style.transform = `translateX(${-counter * itemWidth}px)`;
+  }
+
+        </script>
+
+    </body>
+
+    </html>
